@@ -1,0 +1,184 @@
+
+
+## 1. Introduction
+
+For this assignment, I modified an existing object-oriented Sudoku solver written in C++. I used ChatGPT and Google Gemini to generate modified versions of the original program. The goal was to preserve the existing Sudoku-solving functionality while modifying the program to write all solutions and the total number of solutions to separate output files for each puzzle. Both implementations use recursive backtracking to solve the puzzles.
+
+## 2. Correctness
+
+Both ChatGPT and Gemini preserved the original SudokuSolver class and implemented recursive backtracking to find solutions. Both programs check whether the starting puzzle contains conflicting clues before searching for solutions. They also validate the input symbols and handle incomplete puzzle files.
+
+However, the implementations differ in their input and error handling. The ChatGPT version checks for extra input after the expected 81 Sudoku cells and attempts to create an output file for every puzzle, even if its input is invalid. The Gemini version does not check for extra tokens after the expected cells and skips creating an output file when the input puzzle cannot be loaded.
+
+These differences make the ChatGPT version more thorough when handling malformed input. Both implementations are designed to find all valid solutions, but their actual results must be compared using the same test puzzles to determine whether they produce matching solutions and counts.
+
+## 3. Execution Time
+
+Both implementations use recursive backtracking. The solver finds an empty cell, tries digits from 1 through 9, checks whether each digit is valid, and recursively continues searching. When a choice leads to an invalid path, the program backtracks and tries another digit.
+
+Because both implementations use the same general algorithm, their expected worst-case time complexity is exponential in the number of empty cells. The actual execution time depends on the puzzle's difficulty and how many possibilities the solver must explore. Neither implementation can be declared faster without measuring both programs under the same conditions.
+
+## 4. Space Complexity
+
+Both implementations store the Sudoku board in a fixed-size 9-by-9 integer array. This requires constant space because the board always contains 81 cells. The recursive backtracking algorithm also uses a call stack, with a maximum search depth bounded by the number of empty cells.
+
+Both versions write completed solutions directly to an output stream instead of storing every solution in a separate collection. This helps avoid using additional memory to retain all solutions at once. Their overall auxiliary space requirements are therefore similar, with the recursive call stack being the main additional space used by the search.
+
+## 5. Maintainability
+
+Both implementations preserve the original SudokuSolver class and separate the solving logic from the main function. They also include comments explaining the purpose of methods and important operations.
+
+The ChatGPT implementation separates some responsibilities into additional methods, including solveToFile(), which handles the search and output summary. This separation can make individual operations easier to test and understand. The Gemini implementation uses a simpler solve() method that checks the clues, performs the search, and writes the final result.
+
+The Gemini implementation is somewhat simpler, while the ChatGPT implementation provides more explicit handling of output files and invalid input. Both are reasonably understandable, but the ChatGPT version provides more comprehensive error handling for the assignment's file-processing requirements.
+
+## 6. Conclusion
+
+Overall, both ChatGPT and Gemini produced implementations based on the original Sudoku solver's recursive backtracking algorithm. Both versions preserve the class-based design and are intended to find every solution for each puzzle.
+
+I would choose the ChatGPT implementation because it provides more thorough input validation and more explicit output-file error handling. These features make it better suited to an assignment that requires separate output files for all five puzzles. However, execution-time performance and solving correctness should be evaluated by running both implementations on the same inputs and comparing their solutions, counts, and measured runtimes.
+
+
+I accessed each GenAI through their respective websites through searching for them.
+
+The prompt i used:
+    I am working on EECS 348 Software Engineering I Assignment 5.
+
+
+
+    I need to modify another student's Assignment 4 Sudoku solver.
+
+    I will provide the original C++ source code below.
+
+
+
+    IMPORTANT REQUIREMENTS:
+
+    Modify the existing code instead of replacing the entire program.
+    2. Preserve the original class structure and existing functionality
+
+    wherever possible.
+
+    3. Mark the modifications clearly so I can identify the changes.
+
+    4. Do not remove existing functionality unless necessary.
+
+
+
+    REQUIRED CHANGES:
+
+
+
+    The program must process puzzle1.txt through puzzle5.txt.
+
+
+    2. For each puzzle, write the results to a separate output file:
+
+    puzzle1.txt -> solution1.txt
+
+    puzzle2.txt -> solution2.txt
+
+    puzzle3.txt -> solution3.txt
+
+    puzzle4.txt -> solution4.txt
+
+    puzzle5.txt -> solution5.txt
+
+
+
+    3. If a puzzle has no solutions, its output file must contain
+
+    exactly one line:
+
+    No solution found.
+
+
+
+    4. If solutions exist, write EVERY valid solution to the
+
+    corresponding output file.
+
+
+
+    5. Format every solution exactly like the input puzzle files,
+
+    using digits separated by spaces and underscores for blank cells.
+
+
+
+    6. After all solutions have been written, append a single final
+
+    line in this format:
+
+    Solutions found: n
+
+
+
+    Replace n with the actual number of solutions.
+
+
+
+    7. Ensure that solution counting is correct and that the program
+
+    does not stop after finding only the first solution.
+
+
+
+    8. Validate the original clues so that duplicate digits in the
+
+    same row, column, or 3x3 block result in no solution.
+
+
+
+    9. Handle missing, unreadable, or malformed input files safely.
+
+
+
+    10. Keep the program compatible with the C++ compiler available
+
+        on the University of Kansas EECS Cycle servers.
+
+
+
+    11. Add my revision information to the profile comments using:
+
+        Revised by: Dalton Brockert
+
+        Revision date: 10/29/2026
+
+
+
+    12. Preserve the original author's attribution and clearly
+
+        identify which code was inherited and which code was modified.
+
+
+
+    13. Provide comments explaining the modifications.
+
+
+
+    14. Do not introduce unnecessary data structures or libraries.
+
+
+
+    ANALYSIS:
+
+    After presenting the modified code, explain:
+
+    Correctness and any potential bugs.
+    Expected execution time and time complexity.
+    Space complexity.
+    Maintainability.
+    What you changed and why.
+
+
+    Return the complete modified source file, but make sure the
+
+    changes are limited to the existing program rather than
+
+    needlessly rewriting it.
+
+
+
+    ORIGINAL SOURCE CODE: [put source code here]
